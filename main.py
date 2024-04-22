@@ -59,7 +59,7 @@ def model_test(model, features, edge_list, target, test_mask):
 
 if __name__ == "__main__":
     device = torch.device("cuda:0" if torch.cuda.is_available() else "cpu")
-    cluster_graph_list,overlapping_nodes,data=read_clusters(d_name='Cora',c_name='Cluster')
+    cluster_graph_list,overlapping_nodes,data=read_clusters(d_name='Cora')
     #Data(x=[2708, 1433], edge_index=[2, 10556], y=[2708], 
     #train_mask=[2708], val_mask=[2708], test_mask=[2708])
     learning_rate = 0.01
