@@ -8,7 +8,7 @@ from sklearn.preprocessing import normalize
 from torch_geometric.datasets import Planetoid
 from torch_geometric.transforms import NormalizeFeatures
 from torch_geometric.utils.convert import to_networkx
-#from karateclub.community_detection.overlapping import DANMF
+from karateclub.community_detection.overlapping import DANMF
 from torch_geometric.utils import to_dense_adj, dense_to_sparse
 
 
@@ -72,7 +72,11 @@ def plot_grah(graph):
 def read_clusters(d_name='Cora',c_name='Cluster'):
     dataset = Planetoid(root='data/Planetoid', name=d_name)
     data = dataset[0]
-    Cluster = read_list(f"./data/Planetoid/Cora/{c_name}")
+    graph = to_networkx(data, to_undirected=True)
+
+    cluster_membership = danmf_clustering(dataset_name=d_name, graph=graph, clustering_overlap=True, membership_closeness=1)
+    Cluster = np.array(list(cluster_membership.items()))    
+    
     clu = []
     overlapping_nodes=[]
     for i in range(len(Cluster)):
