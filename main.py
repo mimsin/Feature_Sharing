@@ -68,7 +68,7 @@ if __name__ == "__main__":
     num_features=data.num_features
     num_classes=7
     num_clusters=len(cluster_graph_list)
-    epochs=1001
+    epochs=201
     model_list = []
     optimizers=[]
     for i in range(num_clusters):
