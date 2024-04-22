@@ -69,7 +69,7 @@ def plot_grah(graph):
     plt.show()
     return 0
 
-def read_clusters(d_name='Cora',c_name='Cluster'):
+def read_clusters(d_name='Cora'):
     dataset = Planetoid(root='data/Planetoid', name=d_name)
     data = dataset[0]
     graph = to_networkx(data, to_undirected=True)
